@@ -1,4 +1,37 @@
-# sam-app
+# Hello AWS SAM
+
+An example on AWS SAM.
+
+This sends events to the Slack channel.
+
+
+## Deploy
+
+```sh
+export AWS_PROFILE=hello
+aws s3 mb s3://hello-sam-int128
+sam package --template-file template.yaml --output-template-file packaged.yaml --s3-bucket hello-sam-int128
+sam deploy --template-file packaged.yaml --stack-name sam-app --capabilities CAPABILITY_IAM --region=us-east-1
+```
+
+You can see progress on https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks
+
+After deployment:
+
+1. Set up a Slack Incoming Webhook.
+1. Set `SLACK_WEBHOOK` variable on https://console.aws.amazon.com/lambda/home?region=us-east-1
+
+You can see log on https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:
+
+## Destroy
+
+You can destroy the stack on https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks
+
+
+
+----
+
+# Generated README.md
 
 This is a sample template for sam-app - Below is a brief explanation of what we have generated for you:
 
