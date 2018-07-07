@@ -10,7 +10,6 @@ Globals:
     Function:
         Timeout: 3
 
-
 Resources:
 
     HelloWorldFunction:
@@ -21,13 +20,22 @@ Resources:
             Runtime: nodejs8.10
             Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
                 Variables:
-                    PARAM1: VALUE
+                    SLACK_WEBHOOK: ""
             Events:
-                HelloWorld:
+                HelloWorldAPI:
                     Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
                     Properties:
                         Path: /hello
                         Method: get
+                HelloWorldSNS:
+                    Type: SNS
+                    Properties:
+                        Topic: !Ref HelloWorldTopic
+
+    HelloWorldTopic:
+        Type: AWS::SNS::Topic
+        Properties:
+            DisplayName: HelloWorldLambda
 
 Outputs:
 
