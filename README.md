@@ -8,15 +8,23 @@ This sends the following events to the Slack channel:
 - SNS
 
 
-## Setup
+## Getting Started
+
+Prerequisite:
+
+- You have an AWS account.
+- You have configured your IAM access key.
+
+Then create a bucket.
 
 ```sh
 export AWS_PROFILE=hello
 make bucket
 ```
 
+### Build a stack
 
-## Deploy
+Deploy:
 
 ```sh
 make deploy
@@ -32,15 +40,15 @@ After deployment:
 You can see log on https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logs:
 
 
-## Destroy
+### Destroy the stack
 
-You can destroy the stack on https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks
+```sh
+make destroy
+```
 
 
 
 ----
-
-# Generated README.md
 
 This is a sample template for sam-app - Below is a brief explanation of what we have generated for you:
 
